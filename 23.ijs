@@ -36,7 +36,6 @@ NB. results into a flat list and reshapes by the original shape
 pairs =: $$[:;_2<@|.\"1]
 
 NB. Box every chunk split by the leading delimiter
-NB. If x is 0 then return nothing by taking nothing
-NB. Else drop x-1 values from y. join by spaces and box the result
-NB. then append that to the first x-1 values taken from y
-partition =. ((<:@[{.]),' '<@joinstring<:@[}.])`{.@.(0=[)' '(<;._1)@,]
+NB. Drop x-1 items, join by spaces, box and append to x-1 items taken from y
+NB. Take x items from the result
+partition =. [{.<:@[({.,<@(;:inv)@}.)' '<;._1@,] NB. created by stacks
